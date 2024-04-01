@@ -1,7 +1,10 @@
 import { IoAccessibilityOutline, IoHeartOutline, IoListOutline, IoLockClosedOutline, IoPawOutline } from 'react-icons/io5';
 import { WhiteCard } from '../../components';
+import { useBearStore } from '../../stores';
+import { useShallow } from 'zustand/react/shallow';
 
 export const Dashboard = () => {
+  const {computed}=useBearStore(useShallow(state=>state))
   return (
     <>
       <h1>Dashboard</h1>
@@ -14,6 +17,7 @@ export const Dashboard = () => {
           <IoPawOutline size={ 50 } className="text-indigo-600" />
           <h2>Osos</h2>
           <p>Información</p>
+          <p>{computed.totalBears}</p>
         </WhiteCard>
 
 

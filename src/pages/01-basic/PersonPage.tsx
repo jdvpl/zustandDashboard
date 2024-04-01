@@ -1,8 +1,10 @@
 import { WhiteCard } from '../../components';
+import { usePersonStore } from '../../stores';
 
 
 
 export const PersonPage = () => {
+  const {firstName,lastName,setFirstName,setLastName}=usePersonStore(state=>state)
   return (
     <>
       <h1>Persona</h1>
@@ -25,6 +27,8 @@ export const PersonPage = () => {
                     name="firstName"
                     id="firstName"
                     placeholder="Primer Nombre"
+                    value={firstName}
+                    onChange={e=>setFirstName(e.target.value)}
                   />
                 </div>
               </div>
@@ -40,6 +44,8 @@ export const PersonPage = () => {
                     name="lastName"
                     id="lastName"
                     placeholder="Apellido"
+                    value={lastName}
+                    onChange={e=>setLastName(e.target.value)}
                   />
                 </div>
               </div>
@@ -48,8 +54,8 @@ export const PersonPage = () => {
             <pre className="bg-gray-200 p-5 rounded-[20px]">
               {
                 JSON.stringify({
-                  firstName: '',
-                  lastName: ''
+                  firstName,
+                  lastName
                 }, null, 2)
               }
             </pre>
